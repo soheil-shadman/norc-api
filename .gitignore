@@ -1,0 +1,11 @@
+node_modules
+dist
+dist.zip
+storage/
+.localhost
+package-lock.json
+log.log
+error.log
+.env
+src/config.js
+storage/leaderboard-config.json

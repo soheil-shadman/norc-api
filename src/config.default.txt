@@ -1,0 +1,11 @@
+export const CONFIG = {
+    port: 4647,
+    DB_URL: `postgres://postgres:polo1374@deadcat.ir:5432/soheil_norc`,
+    API_TOKEN: 'soheil',
+    SYSTEM_TOKEN: `nomaghz`,
+    SITE_URL: (path) => {
+        if (path.startsWith('/'))
+            path = path.substring(1);
+        return `http://localhost:4647/${path}`;
+    }
+}
