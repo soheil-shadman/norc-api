@@ -3,6 +3,7 @@ import { isEmptyString, moment_now } from "../utils/utils";
 import { Controller } from "./controller";
 import { create_jwt_token, decode_jwt_token } from "../libs/encode";
 import { SchemaChecker } from '../utils/schema_utils';
+import e from "express";
 export class AuthController extends Controller {
     constructor(socketEvents) {
         super(socketEvents);
@@ -41,15 +42,33 @@ export class AuthController extends Controller {
         this.expressRouter.post('/login', async (req, res) => {
             try {
                 let username = req.body.username;
+                let email = req.body.email;
                 let password = req.body.password;
-                if (isEmptyString(username) || isEmptyString(password)) {
+
+                let userparam=true;
+                let emailparam=true;
+                if(isEmptyString(password)){
                     res.sendError('invalid parameters', 400);
                     return;
                 }
-                let user = await API_MODULES.User.findOne({ where: { username } });
-                if (user == undefined) {
-                    user = await API_MODULES.User.findOne({ where: { email: username } });
+                if (isEmptyString(username)) {
+                    userparam=false
+                  
                 }
+                if (isEmptyString(email)) {
+                    emailparam=false
+                  
+                }
+                if(!(emailparam||userparam)){
+                    res.sendError('invalid parameters', 400);
+                    return;
+                }
+                let user;
+                if(userparam)
+                 user = await API_MODULES.User.findOne({ where: { username } });
+                 else
+                 user = await API_MODULES.User.findOne({ where: { email } });
+
                 if (user == undefined) {
                     res.sendError('user not found', 404);
                     return;

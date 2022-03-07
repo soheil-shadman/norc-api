@@ -42,6 +42,9 @@ const main = async () => {
         addModelController(API_MODULES.UserLog, 'logs');
         addModelController(API_MODULES.UserMusic, 'music');
         addModelController(API_MODULES.UserFile, 'files');
+        addModelController(API_MODULES.MobileSensor, 'mobile-sensor');
+        addModelController(API_MODULES.UserSpotify, 'user-spotify');
+       
 
         //run http server,ws server:
         myExpress.http.listen(CONFIG.port, function () {
