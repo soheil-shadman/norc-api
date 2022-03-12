@@ -7,7 +7,7 @@ export class MobileSensor extends Sequelize.Model {
 MobileSensor.init({
     userId: { type: Sequelize.INTEGER, allowNull: false, defaultValue: -1 },
     dateTime: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
-    dateTimeOffset: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
+    geoTime: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
     accelerationX: { type: Sequelize.FLOAT, allowNull: false, defaultValue: 0.0 },
     accelerationY: { type: Sequelize.FLOAT, allowNull: false, defaultValue: 0.0 },
     accelerationZ: { type: Sequelize.FLOAT, allowNull: false, defaultValue: 0.0 },
