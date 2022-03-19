@@ -5,6 +5,7 @@ import { UserLog } from './models/user_log.js';
 import { UserMusic } from './models/user_music.js';
 import { MobileSensor } from './models/mobile_sensor';
 import { UserSpotify } from './models/user_spotify';
+import { UserVoice } from './models/user_voice';
 import { dbConnection } from './sequelize_db.js';
 const fs = require('fs');
 const path = require('path');
@@ -16,5 +17,6 @@ export const API_MODULES = {
     UserLog,
     UserMusic,
     MobileSensor,
-    UserSpotify
+    UserSpotify,
+    UserVoice
 };

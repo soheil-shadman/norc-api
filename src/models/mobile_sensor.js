@@ -7,6 +7,7 @@ export class MobileSensor extends Sequelize.Model {
 MobileSensor.init({
     userId: { type: Sequelize.INTEGER, allowNull: false, defaultValue: -1 },
     dateTime: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
+    sessionId: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 1 },
     geoTime: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
     accelerationX: { type: Sequelize.FLOAT, allowNull: false, defaultValue: 0.0 },
     accelerationY: { type: Sequelize.FLOAT, allowNull: false, defaultValue: 0.0 },
@@ -35,7 +36,7 @@ MobileSensor.init({
     orientationZ: { type: Sequelize.FLOAT, allowNull: false, defaultValue: 0.0 },
     orientationW: { type: Sequelize.FLOAT, allowNull: false, defaultValue: 0.0 },
     orientationLength: { type: Sequelize.FLOAT, allowNull: false, defaultValue: 0.0 },
-    orientationIsIdentity: { type: Sequelize.FLOAT, allowNull: false, defaultValue: 0.0 },
+    orientationIsIdentity: { type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false },
 
 }, {
     sequelize: dbConnection,

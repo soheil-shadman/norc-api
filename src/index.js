@@ -44,6 +44,7 @@ const main = async () => {
         addModelController(API_MODULES.UserFile, 'files');
         addModelController(API_MODULES.MobileSensor, 'mobile-sensor');
         addModelController(API_MODULES.UserSpotify, 'user-spotify');
+        addModelController(API_MODULES.UserVoice, 'user-voice');
        
 
         //run http server,ws server:
