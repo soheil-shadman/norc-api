@@ -8,6 +8,7 @@ UserSpotify.init({
     userId: { type: Sequelize.INTEGER, allowNull: false, defaultValue: -1 },
     dateTime: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
     episodeId: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
+    sessionId: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
     trackId: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
     playbackRepeatState: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
     playbackContextUri: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
