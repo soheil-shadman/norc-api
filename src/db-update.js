@@ -12,14 +12,14 @@ dbConnection
     .authenticate()
     .then(async () => {
         console.log('connected!');
-        // await User.sync();
-        // await UserFile.sync();
-        // await UserLog.sync({force:true});
+        await User.sync();
+        await UserFile.sync();
+        await UserLog.sync({force:true});
         await MusicData.sync({force:true});
         await MusicMetaData.sync({force:true});
-        // await UserSpotify.sync({force:true});
-        // await MobileSensor.sync({force:true});
-        // await UserVoice.sync({force:true});
+        await UserSpotify.sync({force:true});
+        await MobileSensor.sync({force:true});
+        await UserVoice.sync({force:true});
 
         console.log('done');
     })
