@@ -8,6 +8,7 @@ import { CONFIG } from "./config.js";
 import { AuthController } from "./controllers/auth_controller.js";
 import { ModelController } from "./controllers/model_controller";
 import FilesController from "./controllers/files_controller.js";
+import MusicDataController from "./controllers/music_data_controller.js";
 const mongoose = require('mongoose');
 const main = async () => {
     try {
@@ -33,6 +34,7 @@ const main = async () => {
         //controllers:
         myExpress.expressApp.use('/api/users/', new AuthController(CAT_SOCKET_EVENTS).expressRouter);
         myExpress.expressApp.use('/api/files/', new FilesController(CAT_SOCKET_EVENTS).expressRouter);
+        myExpress.expressApp.use('/api/music-data/', new MusicDataController(CAT_SOCKET_EVENTS).expressRouter);
         // myExpress.expressApp.use('/api/shop/',new Shop)
         // model controllers
         const addModelController = (model, slug) => {
@@ -40,11 +42,12 @@ const main = async () => {
         };
         addModelController(API_MODULES.User, 'users');
         addModelController(API_MODULES.UserLog, 'logs');
-        addModelController(API_MODULES.UserMusic, 'music');
         addModelController(API_MODULES.UserFile, 'files');
         addModelController(API_MODULES.MobileSensor, 'mobile-sensor');
         addModelController(API_MODULES.UserSpotify, 'user-spotify');
         addModelController(API_MODULES.UserVoice, 'user-voice');
+        addModelController(API_MODULES.MusicData, 'music-data');
+        addModelController(API_MODULES.MusicMetaData, 'music-meta-data');
        
 
         //run http server,ws server:

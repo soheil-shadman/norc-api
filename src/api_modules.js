@@ -2,9 +2,10 @@ import { CONFIG } from './config.js';
 import { User } from './models/user.js';
 import { UserFile } from './models/user_file.js';
 import { UserLog } from './models/user_log.js';
-import { UserMusic } from './models/user_music.js';
+import { MusicData } from './models/music_data';
 import { MobileSensor } from './models/mobile_sensor';
 import { UserSpotify } from './models/user_spotify';
+import { MusicMetaData } from './models/music_meta_data.js';
 import { UserVoice } from './models/user_voice';
 import { dbConnection } from './sequelize_db.js';
 const fs = require('fs');
@@ -15,7 +16,8 @@ export const API_MODULES = {
     User,
     UserFile,
     UserLog,
-    UserMusic,
+    MusicData,
+    MusicMetaData,
     MobileSensor,
     UserSpotify,
     UserVoice
