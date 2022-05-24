@@ -6,6 +6,7 @@ import { UserSpotify } from "./models/user_spotify";
 import { MobileSensor } from "./models/mobile_sensor";
 import { UserVoice } from "./models/user_voice";
 import { MusicMetaData } from "./models/music_meta_data";
+import { SpotifyStateData } from './models/spotify_state_data';
 import { dbConnection } from "./sequelize_db";
 const Sequelize = require('sequelize');
 dbConnection
@@ -20,7 +21,7 @@ dbConnection
         await UserSpotify.sync({force:true});
         await MobileSensor.sync({force:true});
         await UserVoice.sync({force:true});
-
+        await SpotifyStateData.sync({force:true});
         console.log('done');
     })
     .catch(err => {

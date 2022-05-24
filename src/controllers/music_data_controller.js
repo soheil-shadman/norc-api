@@ -46,7 +46,13 @@ export default class MusicDataController extends Controller {
                         album:req.body.album,
                         genre:req.body.genre,
                         artist:req.body.artist,
-                        energy:req.body.energy
+                        energy:req.body.energy,
+                        songImageURL:req.body.songImageURL,
+                        albumImageURL:req.body.albumImageURL,
+                        artistImageURL:req.body.artistImageURL,
+                        genreImageURL:req.body.genreImageURL,
+                        
+
                      
                     });
                     await musicMetaData.save();
@@ -56,7 +62,8 @@ export default class MusicDataController extends Controller {
                         path: filePath,
                         optionalData:req.body.optionalData,
                         musicMetaDataId:musicMetaData.id,
-                        thumbnail:req.body.thumbnail
+                        thumbnail:req.body.thumbnail,
+                        musicUrl: req.body.musicUrl
 
                     });
                     await musicFile.save();

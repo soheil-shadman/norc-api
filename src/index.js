@@ -48,6 +48,7 @@ const main = async () => {
         addModelController(API_MODULES.UserVoice, 'user-voice');
         addModelController(API_MODULES.MusicData, 'music-data');
         addModelController(API_MODULES.MusicMetaData, 'music-meta-data');
+        addModelController(API_MODULES.SpotifyStateData, 'spotify-state-data');
        
 
         //run http server,ws server:
