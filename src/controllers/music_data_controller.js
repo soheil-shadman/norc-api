@@ -4,6 +4,7 @@ import { isEmptyString } from "../utils/utils";
 import { API_MODULES } from "../api_modules";
 const fs = require('fs');
 const path = require('path');
+const Sequelize = require('sequelize');
 export default class MusicDataController extends Controller {
     constructor(socketEvents) {
         super(socketEvents);
@@ -44,6 +45,7 @@ export default class MusicDataController extends Controller {
                         year:req.body.year,
                         bitrate:req.body.bitrate,
                         album:req.body.album,
+                        mediaType:req.body.mediaType,
                         genre:req.body.genre,
                         artist:req.body.artist,
                         energy:req.body.energy,
@@ -52,7 +54,6 @@ export default class MusicDataController extends Controller {
                         artistImageURL:req.body.artistImageURL,
                         genreImageURL:req.body.genreImageURL,
                         
-
                      
                     });
                     await musicMetaData.save();
@@ -63,8 +64,6 @@ export default class MusicDataController extends Controller {
                         optionalData:req.body.optionalData,
                         musicMetaDataId:musicMetaData.id,
                         thumbnail:req.body.thumbnail,
-                        musicUrl: req.body.musicUrl
-
                     });
                     await musicFile.save();
                     musicMetaData.musicId=musicFile.id;
@@ -79,6 +78,66 @@ export default class MusicDataController extends Controller {
             }
             catch (err) {
                 res.sendError(err);
+            }
+        });
+        this.expressRouter.get('/search-music-name', async (req, res) => {
+            try {
+             
+                let search = req.query.search;
+                if (isEmptyString(search)) {
+                    res.sendError('invalid parameters');
+                    return;
+                }
+              
+                let music = await API_MODULES.MusicData.findAll({
+                    where: {
+                        [Sequelize.Op.or]: [
+                            {
+                                name: {
+                                    [Sequelize.Op.like]: `%${search}%`,
+                                }
+                            }
+                        ]
+                    }
+                });
+                if(music==undefined){
+                    res.sendError('no music found');
+                    return;
+                }
+                
+               
+
+
+                res.sendResponse({
+                    music
+                })
+            }
+            catch (err) {
+                res.sendError(err.error);
+            }
+        });
+        this.expressRouter.get('/search-music-whole-id', async (req, res) => {
+            try {
+             
+               
+                if (isEmptyString(req.query.id)) {
+                    res.sendError('invalid parameters');
+                    return;
+                }
+                let id = parseInt(req.query.id);
+                let music = await API_MODULES.MusicData.findByPk(id);
+                if(music==undefined){
+                    res.sendError('no music found');
+                    return;
+                }
+                let musicMeta = await API_MODULES.MusicMetaData.findByPk(music.musicMetaDataId);
+                res.sendResponse({
+                    music,
+                    musicMeta
+                })
+            }
+            catch (err) {
+                res.sendError(err.error);
             }
         });
     }

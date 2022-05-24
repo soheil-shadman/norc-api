@@ -5,25 +5,21 @@ export class MusicMetaData extends Sequelize.Model {
 
 }
 MusicMetaData.init({
-    userId: { type: Sequelize.INTEGER, allowNull: false, defaultValue: -1 },
     musicId: { type: Sequelize.INTEGER, allowNull: false, defaultValue: -1 },
-    sessionId: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
-    buffered: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
-    muted: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
-    position: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
-    state: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
-    volume: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
-    playlistCount: { type: Sequelize.STRING, allowNull: false, defaultValue: '0' },
-    repeatMode: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
-    shuffleMode: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
-    year: { type: Sequelize.INTEGER, allowNull: false, defaultValue: -1 },
     title: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
     artist: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
+    mediaType: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
+    year: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
     album: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
+    duration: { type: Sequelize.STRING, allowNull: false, defaultValue: '0' },
     genre: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
     bitrate: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
     energy: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
-    valence: { type: Sequelize.STRING, allowNull: false, defaultValue: '' }
+    valence: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
+    songImageURL: { type: Sequelize.STRING, allowNull: false, defaultValue: 'https://img.icons8.com/windows/344/apple-music.png' },
+    albumImageURL: { type: Sequelize.STRING, allowNull: false, defaultValue: 'https://img.icons8.com/windows/344/apple-music.png' },
+    artistImageURL: { type: Sequelize.STRING, allowNull: false, defaultValue: 'https://img.icons8.com/windows/344/apple-music.png' },
+    genreImageURL: { type: Sequelize.STRING, allowNull: false, defaultValue: 'https://img.icons8.com/windows/344/apple-music.png' },
    
 }, {
     sequelize: dbConnection,
