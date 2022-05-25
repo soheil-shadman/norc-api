@@ -19,9 +19,9 @@ dbConnection
         // await MusicData.sync({force:true});
         // await MusicMetaData.sync({force:true});
         // await UserSpotify.sync({force:true});
-        // await MobileSensor.sync({force:true});
-        // await UserVoice.sync({force:true});
-        // await SpotifyStateData.sync({force:true});
+        await MobileSensor.sync({force:true});
+       
+        await SpotifyStateData.sync({force:true});
     
         await UserVoice.sync({force:true});
     
