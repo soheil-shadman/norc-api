@@ -13,7 +13,7 @@ UserVoice.init({
     sampleRate: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
     channelType: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
     encoding: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
-    data: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
+    data: { type: Sequelize.STRING(1000), allowNull: false, defaultValue: '' },
 
 }, {
     sequelize: dbConnection,
