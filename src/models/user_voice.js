@@ -9,7 +9,7 @@ UserVoice.init({
     dateTime: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
     sessionId: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
     sequenceId: { type: Sequelize.INTEGER, allowNull: false, defaultValue: '1' },
-    lengeth: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
+    length: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
     sampleRate: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
     channelType: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
     encoding: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
