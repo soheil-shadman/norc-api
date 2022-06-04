@@ -9,6 +9,7 @@ import { AuthController } from "./controllers/auth_controller.js";
 import { ModelController } from "./controllers/model_controller";
 import FilesController from "./controllers/files_controller.js";
 import MusicDataController from "./controllers/music_data_controller.js";
+import UserVoiceController from "./controllers/user_voice_controller";
 const mongoose = require('mongoose');
 const main = async () => {
     try {
@@ -35,6 +36,7 @@ const main = async () => {
         myExpress.expressApp.use('/api/users/', new AuthController(CAT_SOCKET_EVENTS).expressRouter);
         myExpress.expressApp.use('/api/files/', new FilesController(CAT_SOCKET_EVENTS).expressRouter);
         myExpress.expressApp.use('/api/music-data/', new MusicDataController(CAT_SOCKET_EVENTS).expressRouter);
+        myExpress.expressApp.use('/api/user-voice/', new UserVoiceController(CAT_SOCKET_EVENTS).expressRouter);
         // myExpress.expressApp.use('/api/shop/',new Shop)
         // model controllers
         const addModelController = (model, slug) => {

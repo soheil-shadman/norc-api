@@ -6,14 +6,11 @@ export class UserVoice extends Sequelize.Model {
 }
 UserVoice.init({
     userId: { type: Sequelize.INTEGER, allowNull: false, defaultValue: -1 },
-    dateTime: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
+    name: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
     sessionId: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
-    sequenceId: { type: Sequelize.INTEGER, allowNull: false, defaultValue: '1' },
-    length: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
-    sampleRate: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
-    channelType: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
-    encoding: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
-    data: { type: Sequelize.STRING(2000), allowNull: false, defaultValue: '' },
+    sequenceId: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 1},
+    mood: { type: Sequelize.ENUM("sad", "happy", "neutral","angry","nervous"), allowNull: false, defaultValue:'neutral' },
+    path: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
 
 }, {
     sequelize: dbConnection,
