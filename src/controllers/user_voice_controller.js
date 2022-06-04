@@ -2,6 +2,7 @@ import { Controller } from "./controller";
 import { CONFIG } from "../config";
 import { isEmptyString } from "../utils/utils";
 import { API_MODULES } from "../api_modules";
+import { Console } from "console";
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -16,6 +17,10 @@ export default class UserVoiceController extends Controller {
                 }
                 if (isEmptyString(req.body.name)) {
                     res.sendError('invalid parameters user-voice file');
+                    return;
+                }
+                if(req.body.name.includes('-')){
+                    res.sendError('invalid naming for name');
                     return;
                 }
                 if (req.files.myFile == undefined) {
@@ -37,20 +42,20 @@ export default class UserVoiceController extends Controller {
                         [Sequelize.Op.or]: [
                             {
                                 userId: {
-                                    [Sequelize.Op.like]:req.api.user.id,
+                                    [Sequelize.Op.eq]:req.api.user.id,
                                 },
                                 sessionId: {
-                                    [Sequelize.Op.like]: sessionIdInt,
+                                    [Sequelize.Op.eq]: sessionIdInt,
                                 },
                                 sequenceId: {
-                                    [Sequelize.Op.like]: sequenceIdInt,
+                                    [Sequelize.Op.eq]: sequenceIdInt,
                                 }
                             }
                         ]
                     }
                 });
-                if(redundadntData!=undefined){
-                    res.sendError(`SequenceId ${sequenceIdInt} for Session :${sessionIdInt}`);
+                if(redundadntData.length!=0){
+                    res.sendError(`SequenceId ${sequenceIdInt} for Session :${sessionIdInt} already exist`);
                     return;
                 }
 
@@ -60,7 +65,7 @@ export default class UserVoiceController extends Controller {
                     fs.mkdirSync(`storage/user-voice/`);
                 const f = req.files.myFile;
                 const fileFormat = f.name.substring(f.name.lastIndexOf('.'), f.name.length);
-                const filePath = `storage/user-voice/${req.body.name}-${req.api.user.id}-${req.body.sequenceId}-${req.body.sessionId}-${Date.now()}` + fileFormat;
+                const filePath = `storage/user-voice/${req.body.name}-${req.api.user.id}-${req.body.sessionId}-${req.body.sequenceId}-${Date.now()}` + fileFormat;
                 f.mv(filePath, async (err) => {
                     if (err) {
                         res.sendError(err.toString());
