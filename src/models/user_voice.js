@@ -9,7 +9,7 @@ UserVoice.init({
     name: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
     sessionId: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 },
     sequenceId: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 1},
-    mood: { type: Sequelize.ENUM("sad", "happy", "neutral","angry","nervous"), allowNull: false, defaultValue:'neutral' },
+    mood: { type: Sequelize.ENUM("sad", "happy", "neutral","angry","nervous","nan"), allowNull: false, defaultValue:'nan' },
     path: { type: Sequelize.STRING, allowNull: false, defaultValue: '' },
 
 }, {
