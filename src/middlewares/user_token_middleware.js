@@ -17,6 +17,8 @@ export const userTokenMiddleware = async (req, res, next) => {
         req.api.hasUser = () => true;
         let wasSystem = req.api.isSystem();
         req.api.isSystem = () => wasSystem || req.api.user.isAdmin;
+        console.log("========================================")
+        console.log(userToken)
         next();
     }
     catch (err) {

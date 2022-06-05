@@ -129,7 +129,8 @@ export class AuthController extends Controller {
                     res.sendError('invalid user-token', 401);
                     return;
                 }
-                res.sendResponse(result.user);
+        
+                res.sendResponse("valid token");
             }
             catch (err) {
                 res.sendError(err);
